@@ -1,0 +1,1 @@
+E:\FinalSPS\SPS\SPS.Windows\SPS.Windows.csproj;x64

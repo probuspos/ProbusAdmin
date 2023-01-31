@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "yL6Ch1hdfIFOa28F4UzoaDdwbEhHAyHZ5vmc1pnH6sA=",
+  "Source": "SPS.API",
+  "BasePath": "_content/SPS.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

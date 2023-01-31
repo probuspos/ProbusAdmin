@@ -1,0 +1,57 @@
+﻿@page "/userdata"
+@using SPS.UI.Data;
+<PageTitle>User Data</PageTitle>
+@inject HttpClient Http
+<h1>User Data</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (userList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Cell No</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in userList)
+            {
+                <tr>
+                    <td>@user.Username</td>
+                    <td>@user.Address</td>
+                    <td>@user.Cellnumber</td>
+                    <td>
+                        <a href='/user/edit/@user.Userid' class="link-dark" role="button">
+                            Edit
+                        </a>
+                        <a href='/user/delete/@user.Userid' class="link-danger" role="button">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    protected List<User> userList = new();
+    protected List<User> searchUserData = new();
+    protected override async Task OnInitializedAsync()
+    {
+        await GetUser();
+    }
+    protected async Task GetUser()
+    {
+        userList = await Http.GetFromJsonAsync<List<User>>("https://admin.navsharsoftware.com/api/User");
+        searchUserData = userList;
+    }
+}
